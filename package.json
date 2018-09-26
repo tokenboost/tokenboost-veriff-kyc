@@ -1,0 +1,50 @@
+{
+  "name": "tokenboost-veriff-kyc",
+  "version": "1.0.0",
+  "description": "Veriff KYC contracts and express backend for TokenBoost",
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "build/contracts",
+    "contracts",
+    "test"
+  ],
+  "scripts": {
+    "test": "truffle compile && truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tokenboost/tokenboost-veriff-kyc"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "tokenboost",
+    "token",
+    "raiser",
+    "boost",
+    "veriff",
+    "kyc"
+  ],
+  "author": "Yoonjae Yoo <yoonjae@dnext.co>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/tokenboost/tokenboost-veriff-kyc/issues"
+  },
+  "homepage": "https://github.com/tokenboost/tokenboost-veriff-kyc",
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "4.16.3",
+    "hdwallet-accounts": "0.0.1",
+    "kue": "0.11.6",
+    "tokenboost-solidity-erc20sale": "1.0.0",
+    "truffle-contract": "3.0.6",
+    "truffle-hdwallet-provider": "0.0.6",
+    "web3": "^0.20.0",
+    "zeppelin-solidity": "^1.12.0"
+  }
+}
