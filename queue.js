@@ -19,12 +19,15 @@ const queue = kue.createQueue({
 });
 
 queue.process("approved", async (job, done) => {
+    console.log(JSON.stringify(job.data));
     try {
         let veriffKyc = await VeriffKyc.deployed();
 
         let web3 = new Web3(provider);
         let countryCodeHex = web3.toHex(job.data.countryCode.toLowerCase());
+        console.log(countryCodeHex);
         let hash = web3.sha3(job.data.address + countryCodeHex.substr(2), {encoding: 'hex'});
+        console.log(hash);
         await Promise.all([
             await veriffKyc.registerAddressCountryCodeHash(hash),
             await veriffKyc.updateStatusOf(job.data.address, 1)
@@ -35,6 +38,7 @@ queue.process("approved", async (job, done) => {
     }
 });
 queue.process("resubmission_requested", async (job, done) => {
+    console.log(JSON.stringify(job.data));
     try {
         let veriffKyc = await VeriffKyc.deployed();
         await veriffKyc.updateStatusOf(job.data.address, 2);
@@ -44,6 +48,7 @@ queue.process("resubmission_requested", async (job, done) => {
     }
 });
 queue.process("declined", async (job, done) => {
+    console.log(JSON.stringify(job.data));
     try {
         let veriffKyc = await VeriffKyc.deployed();
         await veriffKyc.updateStatusOf(job.data.address, 3);
@@ -53,6 +58,7 @@ queue.process("declined", async (job, done) => {
     }
 });
 queue.process("expired", async (job, done) => {
+    console.log(JSON.stringify(job.data));
     try {
         let veriffKyc = await VeriffKyc.deployed();
         await veriffKyc.updateStatusOf(job.data.address, 4);
@@ -62,6 +68,7 @@ queue.process("expired", async (job, done) => {
     }
 });
 queue.process("abandoned", async (job, done) => {
+    console.log(JSON.stringify(job.data));
     try {
         let veriffKyc = await VeriffKyc.deployed();
         await veriffKyc.updateStatusOf(job.data.address, 5);
