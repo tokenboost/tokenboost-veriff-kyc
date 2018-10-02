@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.post('/webhooks/decision', async (req, res) => {
+    console.log(JSON.stringify(req));
     if (req.body.status === 'success') {
         let address = req.body.verification.person.idNumber;
         switch (req.body.verification.status) {
