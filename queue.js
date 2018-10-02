@@ -24,7 +24,7 @@ queue.process("approved", async (job, done) => {
         let veriffKyc = await VeriffKyc.deployed();
 
         let web3 = new Web3(provider);
-        let countryCodeHex = web3.toHex(job.data.countryCode.toLowerCase());
+        let countryCodeHex = web3.toHex(job.data.countryCode.toUpperCase());
         console.log(countryCodeHex);
         let hash = web3.sha3(job.data.address + countryCodeHex.substr(2), {encoding: 'hex'});
         console.log(hash);
