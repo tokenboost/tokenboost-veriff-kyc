@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.post('/webhooks/decision', (req, res) => {
     console.log(JSON.stringify(req.body));
     if (req.body.status === 'success') {
-        let address = req.body.verification.person.idNumber;
+        let address = req.body.verification.vendorData;
         switch (req.body.verification.status) {
             case 'approved': {
                 queue.create('approved', {
